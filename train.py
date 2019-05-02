@@ -19,28 +19,28 @@ from model import yolov3
 #################
 parser = argparse.ArgumentParser(description="YOLO-V3 training procedure.")
 # some paths
-parser.add_argument("--train_file", type=str, default="./data/my_data/train.txt",
+parser.add_argument("--train_file", type=str, default="/mnt/data/ia_dlp/dataset/deepfashion_v1/train.txt",
                     help="The path of the training txt file.")
 
-parser.add_argument("--val_file", type=str, default="./data/my_data/val.txt",
+parser.add_argument("--val_file", type=str, default="/mnt/data/ia_dlp/dataset/deepfashion_v1/val.txt",
                     help="The path of the validation txt file.")
 
-parser.add_argument("--restore_path", type=str, default="./data/darknet_weights/yolov3.ckpt",
+parser.add_argument("--restore_path", type=str, default="/home/analytics/darknet_weights/yolov3.ckpt",
                     help="The path of the weights to restore.")
 
-parser.add_argument("--save_dir", type=str, default="./checkpoint/",
+parser.add_argument("--save_dir", type=str, default="/home/analytics/checkpoint/",
                     help="The directory of the weights to save.")
 
-parser.add_argument("--log_dir", type=str, default="./data/logs/",
+parser.add_argument("--log_dir", type=str, default="/home/analytics/logs/",
                     help="The directory to store the tensorboard log files.")
 
-parser.add_argument("--progress_log_path", type=str, default="./data/progress.log",
+parser.add_argument("--progress_log_path", type=str, default="/home/analytics/progress.log",
                     help="The path to record the training progress.")
 
-parser.add_argument("--anchor_path", type=str, default="./data/yolo_anchors.txt",
+parser.add_argument("--anchor_path", type=str, default="/mnt/data/ia_dlp/dataset/deepfashion_v1/yolo_anchors.txt",
                     help="The path of the anchor txt file.")
 
-parser.add_argument("--class_name_path", type=str, default="./data/coco.names",
+parser.add_argument("--class_name_path", type=str, default="/mnt/data/ia_dlp/dataset/deepfashion_v1/coco.names",
                     help="The path of the class names.")
 
 # some numbers
