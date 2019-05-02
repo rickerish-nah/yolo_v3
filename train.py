@@ -25,7 +25,7 @@ parser.add_argument("--train_file", type=str, default="/mnt/data/ia_dlp/dataset/
 parser.add_argument("--val_file", type=str, default="/mnt/data/ia_dlp/dataset/deepfashion_v1/val.txt",
                     help="The path of the validation txt file.")
 
-parser.add_argument("--restore_path", type=str, default="/home/analytics/darknet_weights/yolov3.ckpt",
+parser.add_argument("--restore_path", type=str, default="/mnt/data/ia_dlp/dataset/deepfashion_v1/darknet_weights/yolov3.ckpt",
                     help="The path of the weights to restore.")
 
 parser.add_argument("--save_dir", type=str, default="/home/analytics/checkpoint/",
