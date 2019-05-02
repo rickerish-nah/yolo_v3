@@ -18,6 +18,7 @@ def parse_line(line):
     '''
     s = line.strip().split(' ')
     pic_path = s[0]
+    pic_path = str('/mnt/data/ia_dlp/dataset/deepfashion_v1/') + pic_path
     s = s[1:]
     box_cnt = len(s) // 5
     boxes = []
@@ -128,7 +129,7 @@ def parse_data(line, class_num, img_size, anchors, mode):
         mode: 'train' or 'val'. When set to 'train', data_augmentation will be applied.
     '''
     pic_path, boxes, labels = parse_line(line)
-    pic_path = str('/mnt/data/ia_dlp/dataset/deepfashion_v1/')+pic_path
+
 
     img = cv2.imread(pic_path)
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
