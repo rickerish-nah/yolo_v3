@@ -17,6 +17,7 @@ def parse_line(line):
             dimension are [x_min, y_min, x_max, y_max]
     '''
     s = line.strip().split(' ')
+    print("String.split(): ",s)
     pic_path = s[0]
     pic_path = str('/mnt/data/ia_dlp/dataset/deepfashion_v1/') + pic_path
     s = s[1:]
