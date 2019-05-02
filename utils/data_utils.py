@@ -132,19 +132,21 @@ def parse_data(line, class_num, img_size, anchors, mode):
     '''
     pic_path, boxes, labels = parse_line(line)
 
+    try:
+        img = cv2.imread(pic_path)
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
-    img = cv2.imread(pic_path)
-    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        img, boxes = resize_image_and_correct_boxes(img, boxes, img_size)
 
-    img, boxes = resize_image_and_correct_boxes(img, boxes, img_size)
+        # do data augmentation here
+        if mode == 'train':
+            img, boxes, labels = data_augmentation(img, boxes, labels)
 
-    # do data augmentation here
-    if mode == 'train':
-        img, boxes, labels = data_augmentation(img, boxes, labels)
+        # the input of yolo_v3 should be in range 0~1
+        img = img / 255.
 
-    # the input of yolo_v3 should be in range 0~1
-    img = img / 255.
+        y_true_13, y_true_26, y_true_52 = process_box(boxes, labels, img_size, class_num, anchors)
 
-    y_true_13, y_true_26, y_true_52 = process_box(boxes, labels, img_size, class_num, anchors)
-
-    return img, y_true_13, y_true_26, y_true_52
+        return img, y_true_13, y_true_26, y_true_52
+    except:
+        print('Error loading img:',pic_path)
