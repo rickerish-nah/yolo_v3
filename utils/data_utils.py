@@ -24,7 +24,7 @@ def parse_line(line):
     boxes = []
     labels = []
     for i in range(box_cnt):
-        print("#####*********\nlabel:",s[i*5],type(s[i*5])
+        print("#####*********\nlabel:",s[i*5],type(s[i*5]))
         label, x_min, y_min, x_max, y_max = int(s[i*5]), float(s[i*5+1]), float(s[i*5+2]), float(s[i*5+3]), float(s[i*5+4])
         boxes.append([x_min, y_min, x_max, y_max])
         labels.append(label)
