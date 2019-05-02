@@ -129,10 +129,11 @@ handle_flag = tf.placeholder(tf.string, [], name='iterator_handle_flag')
 # tf.data pipeline
 ##################
 # Selecting `feedable iterator` to switch between training dataset and validation dataset
-
+print("###################\n1) TF PIPELINE Initiated...")
 # manually shuffle the train txt file because tf.data.shuffle is soooo slow!!
 # you can google it for more details.
 shuffle_and_overwrite(args.train_file)
+print("2) shuffle done")
 train_dataset = tf.data.TextLineDataset(args.train_file)
 train_dataset = train_dataset.apply(tf.contrib.data.map_and_batch(
     lambda x: tf.py_func(parse_data, [x, args.class_num, args.img_size, args.anchors, 'train'], [tf.float32, tf.float32, tf.float32, tf.float32]),
@@ -144,7 +145,7 @@ val_dataset = val_dataset.apply(tf.contrib.data.map_and_batch(
     lambda x: tf.py_func(parse_data, [x, args.class_num, args.img_size, args.anchors, 'val'], [tf.float32, tf.float32, tf.float32, tf.float32]),
     num_parallel_calls=args.num_threads, batch_size=args.batch_size))
 val_dataset.prefetch(args.prefetech_buffer)
-
+print('3) preparing iterators')
 # creating two dataset iterators
 train_iterator = train_dataset.make_initializable_iterator()
 val_iterator = val_dataset.make_initializable_iterator()
@@ -164,11 +165,11 @@ y_true = [y_true_13, y_true_26, y_true_52]
 image.set_shape([None, args.img_size[1], args.img_size[0], 3])
 for y in y_true:
     y.set_shape([None, None, None, None, None])
-
+print('4) Dataset handling over')
 ##################
 # Model definition
 ##################
-
+print("###################\n5) Model definition")
 # define yolo-v3 model here
 yolo_model = yolov3(args.class_num, args.anchors)
 with tf.variable_scope('yolov3'):
