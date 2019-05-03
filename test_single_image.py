@@ -16,13 +16,13 @@ from model import yolov3
 parser = argparse.ArgumentParser(description="YOLO-V3 test single image test procedure.")
 parser.add_argument("input_image", type=str,
                     help="The path of the input image.")
-parser.add_argument("--anchor_path", type=str, default="./data/yolo_anchors.txt",
+parser.add_argument("--anchor_path", type=str, default="/mnt/data/ia_dlp/dataset/deepfashion_v1/yolo_anchors.txt",
                     help="The path of the anchor txt file.")
 parser.add_argument("--new_size", nargs='*', type=int, default=[416, 416],
                     help="Resize the input image with `new_size`, size format: [width, height]")
-parser.add_argument("--class_name_path", type=str, default="./data/coco.names",
+parser.add_argument("--class_name_path", type=str, default="/mnt/data/ia_dlp/dataset/deepfashion_v1/coco.names",
                     help="The path of the class names.")
-parser.add_argument("--restore_path", type=str, default="./data/darknet_weights/yolov3.ckpt",
+parser.add_argument("--restore_path", type=str, default="/mnt/data/ia_dlp/dataset/deepfashion_v1/darknet_weights/yolov3.ckpt",
                     help="The path of the weights to restore.")
 args = parser.parse_args()
 
@@ -74,5 +74,5 @@ with tf.Session() as sess:
         x0, y0, x1, y1 = boxes_[i]
         plot_one_box(img_ori, [x0, y0, x1, y1], label=args.classes[labels_[i]], color=color_table[labels_[i]])
     cv2.imshow('Detection result', img_ori)
-    cv2.imwrite('detection_result.jpg', img_ori)
+    cv2.imwrite('/home/analytics/detection_result.jpg', img_ori)
     cv2.waitKey(0)
