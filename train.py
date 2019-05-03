@@ -221,7 +221,7 @@ with tf.control_dependencies(update_ops):
 with tf.Session() as sess:
     sess.run([tf.global_variables_initializer(), tf.local_variables_initializer(), train_iterator.initializer])
     train_handle_value, val_handle_value = sess.run([train_handle, val_handle])
-    saver_to_restore.restore(sess, args.restore_path)
+    #saver_to_restore.restore(sess, args.restore_path)
     merged = tf.summary.merge_all()
     writer = tf.summary.FileWriter(args.log_dir, sess.graph)
 
