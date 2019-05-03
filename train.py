@@ -59,7 +59,7 @@ parser.add_argument("--train_evaluation_freq", type=int, default=100,
 parser.add_argument("--val_evaluation_freq", type=int, default=100,
                     help="Evaluate on the whole validation dataset after some steps.")
 
-parser.add_argument("--save_freq", type=int, default=500,
+parser.add_argument("--save_freq", type=int, default=100,
                     help="Save the model after some steps.")
 
 parser.add_argument("--num_threads", type=int, default=10,
