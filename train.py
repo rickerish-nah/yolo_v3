@@ -28,13 +28,13 @@ parser.add_argument("--val_file", type=str, default="/mnt/data/ia_dlp/dataset/de
 parser.add_argument("--restore_path", type=str, default="/mnt/data/ia_dlp/dataset/deepfashion_v1/darknet_weights/yolov3.ckpt",
                     help="The path of the weights to restore.")
 
-parser.add_argument("--save_dir", type=str, default="/home/analytics/checkpoint/",
+parser.add_argument("--save_dir", type=str, default="/mnt/data/ia_dlp/dataset/deepfashion_v1/checkpoint/",
                     help="The directory of the weights to save.")
 
-parser.add_argument("--log_dir", type=str, default="/home/analytics/logs/",
+parser.add_argument("--log_dir", type=str, default="/mnt/data/ia_dlp/dataset/deepfashion_v1/logs/",
                     help="The directory to store the tensorboard log files.")
 
-parser.add_argument("--progress_log_path", type=str, default="/home/analytics/progress.log",
+parser.add_argument("--progress_log_path", type=str, default="/mnt/data/ia_dlp/dataset/deepfashion_v1/progress.log",
                     help="The path to record the training progress.")
 
 parser.add_argument("--anchor_path", type=str, default="/mnt/data/ia_dlp/dataset/deepfashion_v1/yolo_anchors.txt",
